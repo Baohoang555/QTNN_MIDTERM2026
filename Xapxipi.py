@@ -29,3 +29,17 @@ sai_so = abs(pi - np.pi)
 
 print(f"Ước lượng pi: {pi:.8f}")
 print(f"Sai số thực nghiệm: {sai_so:.8f}")
+
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.scatter(x[inside], y[inside], s=0.1, color='blue', label='Trong hình tròn')
+ax.scatter(x[~inside], y[~inside], s=0.1, color='purple', label='Ngoài hình tròn')
+
+theta = np.linspace(0, np.pi/2, 300)
+ax.plot(np.cos(theta), np.sin(theta), 'b-', linewidth=2)
+ax.set_aspect('equal')
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 1)
+ax.set_title(f'Monte Carlo ước lượng π ≈ {pi:.5f}')
+ax.legend(markerscale=10)
+plt.tight_layout()
+plt.show()
